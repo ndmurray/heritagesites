@@ -12,12 +12,11 @@ from django.db import models
 class CountryArea(models.Model):
     country_area_id = models.AutoField(primary_key=True)
     country_area_name = models.CharField(unique=True, max_length=100)
-    region = models.ForeignKey('Region', models.DO_NOTHING, blank=True, null=True)
-    sub_region = models.ForeignKey('SubRegion', models.DO_NOTHING, blank=True, null=True)
-    intermediate_region = models.ForeignKey('IntermediateRegion', models.DO_NOTHING, blank=True, null=True)
     m49_code = models.SmallIntegerField()
     iso_alpha3_code = models.CharField(max_length=3)
     dev_status = models.ForeignKey('DevStatus', models.DO_NOTHING, blank=True, null=True)
+    location_id = models.ForeignKey('Location', models.DO_NOTHING, blank=True, null=True)
+
 
     class Meta:
         managed = False
@@ -147,7 +146,7 @@ class HeritageSiteCategory(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'heritage_site_category'
+        db_table = 'heritage_site_category
 '''
 
 
@@ -206,6 +205,7 @@ class IntermediateRegion(models.Model):
 class Region(models.Model):
     region_id = models.AutoField(primary_key=True)
     region_name = models.CharField(unique=True, max_length=100)
+    planet_id = models.ForeignKey('Planet', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -243,6 +243,52 @@ class SubRegion(models.Model):
 
     def __str__(self):
         return self.sub_region_name
+
+
+#planet
+class Planet(models.Model):
+    """
+    New model based on Mtg 5 refactoring of the database.
+    """
+    planet_id = models.AutoField(primary_key=True)
+    planet_name = models.CharField(unique=True, max_length=50)
+    unsd_name = models.CharField(unique=True, max_length=50)
+    # define additional properties as needed    
+
+    class Meta:
+        managed = False   
+        db_table = 'planet'
+        ordering = ['planet_name']
+        verbose_name = 'Planetary host of heritage sites'
+        verbose_name_plural = 'Planetary host of heritage sites'
+
+    def __str__(self):
+        return self.planet
+
+#location
+class Location(models.Model):
+    """
+    New model based on Mtg 5 refactoring of the database.
+    """
+    location_id = models.AutoField(primary_key=True)
+    planet_id = models.ForeignKey('Planet', models.DO_NOTHING, blank=True, null=False)
+    region_id = models.ForeignKey('Region', models.DO_NOTHING, blank=True, null=True)
+    sub_region_id = models.ForeignKey('SubRegion', models.DO_NOTHING, blank=True, null=True)
+    intermediate_region_id = models.ForeignKey('IntermediateRegion', models.DO_NOTHING, blank=True, null=True)
+
+    # define additional properties as needed    
+
+    class Meta:
+        managed = False   
+        db_table = 'location'
+        ordering = ['location_id']
+        verbose_name = 'location (lookup)'
+        verbose_name_plural = 'locations (lookup)'
+
+    def __str__(self):
+        return "The location with the id " + self.location
+
+
 
 
 '''
