@@ -102,7 +102,7 @@ class IntermediateRegionAdmin(admin.ModelAdmin):
 
 @admin.register(models.Region)
 class RegionAdmin(admin.ModelAdmin):
-	fields = ['region_name', 'planet_id']
+	fields = ['region_name']
 	list_display = ['region_name']
 	ordering = ['region_name']
 
@@ -123,19 +123,19 @@ class PlanetAdmin(admin.ModelAdmin):
 	"""
 	New class added as a result of Mtg 5 database refactoring.
 	"""
-	fields = ['planet_id', 'planet_name', 'unsd_name']
+	fields = ['planet_name', 'unsd_name']
 	list_display = ['planet_name']
 	ordering = ['planet_name']
 
 # admin.site.register(models.Planet)
 
 @admin.register(models.Location)
-class PlanetAdmin(admin.ModelAdmin):
+class LocationtAdmin(admin.ModelAdmin):
 	"""
 	New class added as a result of Mtg 5 database refactoring.
 	"""
-	fields = ['location_id', 'planet_id', 'region_id', 'sub_region_id', 'intermediate_region_id']
-	list_display = ['location_id', 'planet_id', 'region_id', 'sub_region_id', 'intermediate_region_id']
-	ordering = ['location_id']
+	fields = ['planet_id', 'region_id', 'sub_region_id', 'intermediate_region_id']
+	list_display = ['planet_id', 'region_id', 'sub_region_id', 'intermediate_region_id']
+	ordering = ['planet_id']
 
 # admin.site.register(models.Planet)

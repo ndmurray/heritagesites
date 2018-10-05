@@ -15,7 +15,7 @@ class CountryArea(models.Model):
     m49_code = models.SmallIntegerField()
     iso_alpha3_code = models.CharField(max_length=3)
     dev_status = models.ForeignKey('DevStatus', models.DO_NOTHING, blank=True, null=True)
-    location_id = models.ForeignKey('Location', models.DO_NOTHING, blank=True, null=True)
+    location = models.ForeignKey('Location', models.DO_NOTHING, blank=True, null=True)
 
 
     class Meta:
@@ -205,7 +205,7 @@ class IntermediateRegion(models.Model):
 class Region(models.Model):
     region_id = models.AutoField(primary_key=True)
     region_name = models.CharField(unique=True, max_length=100)
-    planet_id = models.ForeignKey('Planet', models.DO_NOTHING, blank=True, null=True)
+    planet = models.ForeignKey('Planet', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -263,7 +263,7 @@ class Planet(models.Model):
         verbose_name_plural = 'Planetary host of heritage sites'
 
     def __str__(self):
-        return self.planet
+        return self.planet_name
 
 #location
 class Location(models.Model):
@@ -271,10 +271,10 @@ class Location(models.Model):
     New model based on Mtg 5 refactoring of the database.
     """
     location_id = models.AutoField(primary_key=True)
-    planet_id = models.ForeignKey('Planet', models.DO_NOTHING, blank=True, null=False)
-    region_id = models.ForeignKey('Region', models.DO_NOTHING, blank=True, null=True)
-    sub_region_id = models.ForeignKey('SubRegion', models.DO_NOTHING, blank=True, null=True)
-    intermediate_region_id = models.ForeignKey('IntermediateRegion', models.DO_NOTHING, blank=True, null=True)
+    planet = models.ForeignKey('Planet', models.DO_NOTHING, blank=True, null=False)
+    region = models.ForeignKey('Region', models.DO_NOTHING, blank=True, null=True)
+    sub_region = models.ForeignKey('SubRegion', models.DO_NOTHING, blank=True, null=True)
+    intermediate_region = models.ForeignKey('IntermediateRegion', models.DO_NOTHING, blank=True, null=True)
 
     # define additional properties as needed    
 
