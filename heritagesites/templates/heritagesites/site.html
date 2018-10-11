@@ -1,6 +1,9 @@
+{% extends 'heritagesites/base.html' %}
+
 
 
 {% block content %}
+
 
 <article>
   <header>
@@ -50,16 +53,16 @@
   </nav>
 
   {% if sites %}
-  <ul>
+    <ul>
+      {% for site in sites %}
 
+          <!-- safe filter on for raw HTML stored in database -->
+          <li><a href="{% url 'site_detail' site.pk %}">{{ site.site_name | safe }}</a></li>
 
-    <!-- safe filter on for raw HTML stored in database -->
-    <li><a href="{% url 'site_detail' site.pk %}">{{ site.site_name | safe }}</a></li>
-
-
-  </ul>
+      {% endfor %}
+    </ul>
   {% else %}
-  <p>No Heritage Sites are available to view.</p>
+      <p>No Heritage Sites are available to view.</p>
   {% endif %}
 
   <p>page count: {{ sites.count }}</p>
