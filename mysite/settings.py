@@ -36,8 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'heritagesites.apps.HeritagesitesConfig',
+    'django.contrib.staticfiles',
+    'test_without_migrations'
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
+
+#Test runner
+TEST_RUNNER = 'heritagesites.utils.UnManagedModelTestRunner'
 
 
 # Database

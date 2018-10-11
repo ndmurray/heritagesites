@@ -20,10 +20,8 @@ from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.urls import path, include
 
-# Use static() to add url mapping to serve static files during development (only)
-
 urlpatterns = [
-    url(r'^$', lambda r: HttpResponseRedirect('heritagesites/')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^heritagesites/', include('heritagesites.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('', lambda r: HttpResponseRedirect('heritagesites/')),
+    path('admin/', admin.site.urls),
+    path('heritagesites/', include('heritagesites.urls')),
+]
