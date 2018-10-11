@@ -1,8 +1,10 @@
+{% extends 'heritagesites/base.html' %}
+
 {% block content %}
 
 <!-- safe filter on for raw HTML stored in database -->
 
-<h2>{{site.site_name | safe}}</h2>
+<h2>{{site_detail.site_name | safe}}</h2>
 
 
 
@@ -13,15 +15,13 @@
 
 
 
-
-
-{% if site.description %}
+{% if site_detail.description %}
   <div class="row">
     <div class="col-sm-2">
       <p>Description</p>
     </div>
     <div class="col-sm-10">
-      {{site.description | safe}}
+      {{site_detail.description | safe}}
     </div>
   </div>
 {% endif %}
@@ -36,37 +36,29 @@
 
 
 
-{% if site.date_inscribed %}
+
+{% if site_detail.date_inscribed %}
   <div class="row">
     <div class="col-sm-2">
       <p>Date inscribed</p>
     </div>
     <div class="col-sm-10">
-      {{site.date_inscribed}}
+      {{site_detail.date_inscribed}}
     </div>
   </div>
 {% endif %}
 
-{% if site.latitude and site.longitude %}
+{% if site_detail.latitude and site_detail.longitude %}
   <div class="row">
     <div class="col-sm-2">
       <p>Geo coordinates</p>
     </div>
     <div class="col-sm-4">
-      {{site.latitude}}, {{site.longitude}} (<span style="font-style:italic">lat</span>.,
+      {{site_detail.latitude}}, {{site_detail.longitude}} (<span style="font-style:italic">lat</span>.,
       <span style="font-style:italic">long</span>.)
     </div>
   </div>
 {% endif %}
-
-
-
-
-
-
-
-
-
 
 
 {% endblock content %}}
