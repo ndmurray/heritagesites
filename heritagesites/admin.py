@@ -130,12 +130,12 @@ class PlanetAdmin(admin.ModelAdmin):
 # admin.site.register(models.Planet)
 
 @admin.register(models.Location)
-class LocationtAdmin(admin.ModelAdmin):
+class LocationAdmin(admin.ModelAdmin):
 	"""
 	New class added as a result of Mtg 5 database refactoring.
 	"""
-	fields = ['planet_id', 'region_id', 'sub_region_id', 'intermediate_region_id']
-	list_display = ['planet_id', 'region_id', 'sub_region_id', 'intermediate_region_id']
-	ordering = ['planet_id']
+	fields = ['planet', 'region', 'sub_region', 'intermediate_region']
+	list_display = ['planet', 'region', 'sub_region', 'intermediate_region']
+	ordering = ['planet']
 
 # admin.site.register(models.Planet)

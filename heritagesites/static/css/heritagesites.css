@@ -1,9 +1,46 @@
+/*Nicky styles*/
+
+nav.navbar.navbar-expand-sm.navbar-dark.navbar-custom.p-0 {
+    height: 4em;
+}
+
+
+header > h2, .container-fluid > h2 {
+    font-size: 2.5em;
+    margin-left: 0.5em;
+}
+
+
+ul.pagination.justify-content-center {
+    margin-top: 2em;
+}
+
+.col-sm-2 {
+    padding-left: 2.5em;
+}
+
+.col-sm-2 > p {
+    font-size: 1.2em;
+    color: #D14334;
+}
+
+ul#site-list {
+    font-size: 1.2em;
+    line-height: 1.8em;
+    margin-top: 2em;
+}
+
+.container-fluid > p {
+    margin-left: 1em;
+}
+
+
 /*
  * Page layout
  */
 
 body {
-    background-color: #EAE7DC;
+    background-color: #fff0c5;
 }
 
 /*
@@ -19,7 +56,7 @@ nav {
  */
 
 .navbar-custom {
-    background-color: #8E8D8A;
+    background-color: #028F76;
 }
 
 /* change the brand and text color */
@@ -31,15 +68,21 @@ nav {
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
     color: rgba(255,255,255,.5);
-    padding: 1rem 1rem;
+    padding: 1.25rem 1.5rem;
 }
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:focus .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
+.navbar-custom .nav-item:hover .nav-link,
+ .navbar-custom .nav-item:active .nav-link{
     color: #EAE7DC;
     background-color: #E85A4F; /* add background-color to active links */
 }
+
+li.nav-item.active {
+    background-color: #E85A4F;
+}
+
 
 /*
  * Bootstrap Pagination
@@ -49,14 +92,14 @@ nav {
     background-color: transparent;
     border: 1px solid #D8C3A5;
     color: #EAE7DC;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
     /* line-height: 1rem; */
     text-decoration: none;
 }
 
 .pagination > li.page-item.active {
     background-color: #E85A4F;
-    color: #EAE7DC;
+    color: #1C2130;
     padding: 0.25rem 0.75rem;
 }
 
@@ -70,7 +113,7 @@ main {
 
 .container-fluid {
     background-color: transparent;
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem 1.5rem;
 }
 
 /*
@@ -78,7 +121,7 @@ main {
  */
 
 footer {
-    background-color: #8E8D8A;
+    background-color: #028F76;
     padding: 0.8rem 1rem;
 }
 
@@ -105,7 +148,7 @@ footer a:visited {
 }
 
 footer p {
-    background-color: #8E8D8A;
+    margin-top: 1em;
     display: block;
     text-align: left;
     font-size: 0.875rem;
@@ -118,9 +161,9 @@ footer p {
  */
 
 h1, h2, h3, h4 {
-    color: #E85A4F;
-    /* margin-top: 1em; */
-    margin-bottom: 0.5rem;
+    color: #1C2130;
+    margin-top: 0.5em;
+    margin-bottom: 1.5rem;
     text-align: left;
 }
 
@@ -132,6 +175,7 @@ p {
     /* color: #8E8D8A; */
     color: #333333;
     text-align: justify;
+    font-size: 1.2em;
 }
 
 /*
@@ -141,7 +185,7 @@ p {
 
 a:link {
     background-color: transparent;
-    color: #E85A4F;
+    color: #028F76;
     text-decoration: none;
 }
 
@@ -158,6 +202,6 @@ a:active {
 
 a:visited {
     background-color: transparent;
-    color: #8E8D8A;
+    color: #90bd77;
     text-decoration: none;
 }

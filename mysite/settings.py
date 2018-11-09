@@ -1,3 +1,6 @@
+
+
+
 """
 Django settings for mysite project.
 
@@ -27,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 # Application definition
 
@@ -38,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'heritagesites.apps.HeritagesitesConfig',
     'django.contrib.staticfiles',
+    'social_django',
+    'crispy_forms',
     'test_without_migrations'
 ]
 
@@ -49,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware'
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -64,6 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',                     
+                'social_django.context_processors.login_redirect'               
             ],
         },
     },
@@ -129,3 +140,29 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+#Auth
+
+AUTHENTICATION_BACKENDS = (
+    # 'social_core.backends.open_id.OpenIdAuth',
+    # 'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',                                 
+    # 'social_core.backends.google.GoogleOAuth',
+    # 'social_core.backends.twitter.TwitterOAuth',
+    # 'social_core.backends.yahoo.YahooOpenId',
+    'django.contrib.auth.backends.ModelBackend',                                 
+)
+
+#Google Creds
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '529557012083-j662hmf1b5nvslo6b74u3sv3g1hjtli8.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'VmKyXoduy3ziyWrCRWIotxDu'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'    
+
+LOGIN_URL = '/auth/login/google-oauth2/'
+# LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+

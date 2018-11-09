@@ -7,7 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 
 from django.db import models
-
+from django.urls import reverse
 
 class CountryArea(models.Model):
     country_area_id = models.AutoField(primary_key=True)
@@ -77,7 +77,7 @@ class HeritageSite(models.Model):
     site_name = models.CharField(unique=True, max_length=255)
     description = models.TextField()
     justification = models.TextField(blank=True, null=True)
-    date_inscribed = models.TextField(blank=True, null=True)  # This field type is a guess.
+    date_inscribed = models.IntegerField(blank=True, null=True)
     longitude = models.DecimalField(max_digits=11, decimal_places=8, blank=True, null=True)
     latitude = models.DecimalField(max_digits=10, decimal_places=8, blank=True, null=True)
     area_hectares = models.FloatField(blank=True, null=True)
@@ -94,6 +94,11 @@ class HeritageSite(models.Model):
         verbose_name = 'UNESCO Heritage Site'
         verbose_name_plural = 'UNESCO Heritage Sites'
 
+    #Canonical URL for the model
+    def get_absolute_url(self):
+        # return reverse('site_detail', args=[str(self.id)])
+        return reverse('site_detail', kwargs={'pk': self.pk})
+
     def __str__(self):
         return self.site_name
 
@@ -103,6 +108,8 @@ class HeritageSite(models.Model):
             country_area.country_area_name for country_area in self.country_area.all()[:25])
 
     country_area_display.short_description = 'Country or Area'
+
+    
 
 
 '''
@@ -286,8 +293,7 @@ class Location(models.Model):
         verbose_name_plural = 'locations (lookup)'
 
     def __str__(self):
-        return "The location with the id " + self.location
-
+        return "The location with the id " + str(self.location_id)
 
 
 
