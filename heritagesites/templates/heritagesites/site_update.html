@@ -1,5 +1,9 @@
 <!-- Restore missing template tags -->
 
+{% extends 'heritagesites/base.html' %}
+
+{% load crispy_forms_tags %}
+
 {% block content %}
 
   <header>
@@ -13,32 +17,79 @@
 
   <!-- Restore missing fields rendered using Bootstrap rows and columns classes -->
 
+  <!--heritage site category-->
+    <div class="row">
+      <div class="col-6">
+        {{ form.heritage_site_category|as_crispy_field }}
+      </div>
+    </div>
 
+  <!--country area-->
+  <div class="row">
+    <div class="col-6">
+      {{ form.country_area|as_crispy_field }}
+    </div>
+  </div>
+
+  <!--site name -->
+  <div class="row">
+    <div class="col-6">
+      {{ form.site_name|as_crispy_field }}
+    </div>
+  </div>
+
+  <!--description-->
+  <div class="row">
+    <div class="col-6">
+      {{ form.description|as_crispy_field }}
+    </div>
+  </div>
+
+  <!--justification-->
   <div class="row">
     <div class="col-6">
       {{ form.justification|as_crispy_field }}
     </div>
   </div>
 
+  <!--date inscribed-->
   <div class="row">
     <div class="col-6">
       {{ form.date_inscribed|as_crispy_field }}
     </div>
   </div>
 
+  <!--latitude/longitude-->
+  <div class="row">
+    <div class="col-3">
+      {{ form.longitude|as_crispy_field }}
+    </div>
+    <div class="col-3">
+      {{ form.latitude|as_crispy_field }}
+    </div>
+  </div>
 
-  <!-- Restore missing fields rendered using Bootstrap rows and columns classes --> 
+  <!--area (hectares)-->
+  <div class="row">
+    <div class="col-6">
+      {{ form.area_hectares|as_crispy_field }}
+    </div>
+  </div>
 
-
+  <!--transboundary-->
   <div class="row">
     <div class="col-6">
       {{ form.transboundary|as_crispy_field }}
     </div>
   </div>
 
+
+  <!-- Restore missing fields rendered using Bootstrap rows and columns classes --> 
+
   <button type="submit" class="btn btn-outline-success">Update</button>
   
   <!-- Restore missing button -->
+  &nbsp;<a class="btn btn-outline-secondary" href="{% url 'sites' %}">cancel</a>
 
 </form>
 

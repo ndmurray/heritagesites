@@ -12,12 +12,15 @@
   <form method="post" novalidate>
     {% csrf_token %}
 
+
+    <!--heritage site category-->
     <div class="row">
       <div class="col-6">
         {{ form.heritage_site_category|as_crispy_field }}
       </div>
     </div>
 
+    <!--country area-->
     <div class="row">
       <div class="col-6">
         {{ form.country_area|as_crispy_field }}
@@ -26,8 +29,36 @@
 
 
     <!-- Restore missing fields rendered using Bootstrap rows and columns classes --> 
+
+    <!--site name -->
+    <div class="row">
+      <div class="col-6">
+        {{ form.site_name|as_crispy_field }}
+      </div>
+    </div>
+
+    <!--description -->
+    <div class="row">
+      <div class="col-6">
+        {{ form.description|as_crispy_field }}
+      </div>
+    </div>
+
+    <!--justification -->
+    <div class="row">
+      <div class="col-6">
+        {{ form.justification|as_crispy_field }}
+      </div>
+    </div>
+
+    <!--date inscribed -->
+    <div class="row">
+      <div class="col-6">
+        {{ form.date_inscribed|as_crispy_field }}
+      </div>
+    </div>
     
-    
+    <!--latitude/longitude-->
     <div class="row">
       <div class="col-3">
         {{ form.longitude|as_crispy_field }}
@@ -37,12 +68,14 @@
       </div>
     </div>
 
+    <!--area (hectares)-->
     <div class="row">
       <div class="col-6">
         {{ form.area_hectares|as_crispy_field }}
       </div>
     </div>
 
+    <!--transboundary-->
     <div class="row">
       <div class="col-6">
         {{ form.transboundary|as_crispy_field }}
@@ -50,7 +83,7 @@
     </div>
 
     <button type="submit" class="btn btn-outline-success">Add</button>
-    &nbsp;<a class="btn btn-outline-secondary" href="{% url 'site_new' %}">cancel</a> <!--FIXED url used to be just 'site', changed to 'site)new'
+    &nbsp;<a class="btn btn-outline-secondary" href="{% url 'sites' %}">cancel</a> <!--FIXED url used to be just 'site', changed to 'sites'-->
   </form>
 
 {% endblock content %}
