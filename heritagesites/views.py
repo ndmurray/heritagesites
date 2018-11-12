@@ -3,12 +3,15 @@ from django.http import HttpResponse
 from django.views import generic
 from django.urls import reverse_lazy
 from django.urls import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 
 from .models import HeritageSite
+from .models import HeritageSiteJurisdiction	
 from .models import CountryArea
 from .models import Region
 from .forms import HeritageSiteForm
@@ -91,6 +94,7 @@ class SiteCreateView(generic.View):
 			site = form.save(commit=False)
 			site.save()
 			for country in form.cleaned_data['country_area']:
+				# HeritageSite.objects.create(heritage_site=site, country_area=country)
 				HeritageSiteJurisdiction.objects.create(heritage_site=site, country_area=country)
 			return redirect(site) # shortcut to object's get_absolute_url()
 			# return HttpResponseRedirect(site.get_absolute_url())
@@ -161,7 +165,7 @@ class SiteUpdateView(generic.UpdateView):
 class SiteDeleteView(generic.DeleteView):
 	model = HeritageSite
 	success_message = "Heritage Site deleted successfully"
-	success_url = reverse_lazy('site')
+	success_url = reverse_lazy('sites')
 	context_object_name = 'site'
 	template_name = 'heritagesites/site_delete.html'
 

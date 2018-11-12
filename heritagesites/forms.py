@@ -1,7 +1,7 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-from heritagesites.models import HeritageSite
+from heritagesites.models import HeritageSite, HeritageSiteJurisdiction
 
 
 class HeritageSiteForm(forms.ModelForm):

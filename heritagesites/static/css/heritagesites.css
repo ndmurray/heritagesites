@@ -4,6 +4,10 @@ nav.navbar.navbar-expand-sm.navbar-dark.navbar-custom.p-0 {
     height: 4em;
 }
 
+.navbar-brand {
+    margin-left: 1em;
+    margin-top: 4px;
+}
 
 header > h2, .container-fluid > h2 {
     font-size: 2.5em;
@@ -32,6 +36,12 @@ ul#site-list {
 
 .container-fluid > p {
     margin-left: 1em;
+}
+
+/*Form layout*/
+
+.unesco-form {
+    margin-left: 32px;
 }
 
 
