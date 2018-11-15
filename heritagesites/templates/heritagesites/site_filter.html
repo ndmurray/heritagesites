@@ -15,10 +15,19 @@
       </div>
     </div>
     <div class="col-sm-9">
+
       {% for site in object_list %}
         <h4><a href="{% url 'site_detail' site.pk %}">{{ site.site_name | safe }}</a></h4>
 
         <!-- add the country_area_names and description template tags -->
+
+        {% if site %}
+          {{ site.country_area_names }}
+        {% endif %}
+
+        {% if site %}
+          {{ site.description | safe }}
+        {% endif %}
 
     {% empty %}
       Select one or more filters relevant to your search and then click "filter".
