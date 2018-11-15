@@ -6,6 +6,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 
+from django_filters.views import FilterView
+
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
@@ -15,6 +17,7 @@ from .models import HeritageSiteJurisdiction
 from .models import CountryArea
 from .models import Region
 from .forms import HeritageSiteForm
+from .filters import HeritageSiteFilter
 
 
 def index(request):
@@ -184,3 +187,8 @@ class SiteDeleteView(generic.DeleteView):
 
 		return HttpResponseRedirect(self.get_success_url())
 
+
+#Filter views
+class SiteFilterView(FilterView):
+	filterset_class = HeritageSiteFilter
+	template_name = 'heritagesites/site_filter.html'

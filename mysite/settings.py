@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'crispy_forms',
+    'django_filters',
     'test_without_migrations'
 ]
 
