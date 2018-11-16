@@ -28,28 +28,28 @@ class HeritageSiteFilter(django_filters.FilterSet):
 		field_name='country_area__location__region',
 		label='Region',
 		queryset=Region.objects.all().order_by('region_name'),
-		lookup_expr='icontains'
+		lookup_expr='exact'
 	)
 
 	sub_region = django_filters.ModelChoiceFilter(
 		field_name='country_area__location__sub_region',
 		label='Sub Region',
 		queryset=SubRegion.objects.all().order_by('sub_region_name'),
-		lookup_expr='icontains'
+		lookup_expr='exact'
 	)
 
 	intermediate_region = django_filters.ModelChoiceFilter(
 		field_name='country_area__location__intermediate_region',
 		label='Intermediate Region',
 		queryset=IntermediateRegion.objects.all().order_by('intermediate_region_name'),
-		lookup_expr='icontains'
+		lookup_expr='exact'
 	)
 
 	country_area = django_filters.ModelChoiceFilter(
 		field_name='country_area',
 		label='Country/Area',
 		queryset=CountryArea.objects.all().order_by('country_area_name'),
-		lookup_expr='icontains'
+		lookup_expr='exact'
 	)
 
 	# Add date_inscribed filter here
