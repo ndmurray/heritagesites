@@ -125,11 +125,11 @@ class HeritageSite(models.Model):
         """
         See above, same method for region(s)
         """
-        regions = self.country_area.select_related('location').order_by('region_name')
+        regions = self.country_area.select_related('location__region').order_by('location__region__region_name')
 
         names = []
         for region in regions:
-            name = region.region_name
+            name = region.location.region.region_name
             if name is None:
                 continue
             if name not in names:

@@ -23,7 +23,34 @@
      </header>
    
      {% if site_detail.country_area.all %}
-       <div class="row">
+
+        {% if site_detail.country_area_names %}
+         
+          <div class="row">
+            <div class="col-sm-2">
+              <p>Country/Area(s)</p>
+            </div>
+            <div class="col-sm-10">
+              <p>{{ site_detail.country_area_names }}</p>
+            </div>
+          </div>
+
+        {% endif %}
+
+        {% if site_detail.region_names %}
+         
+          <div class="row">
+            <div class="col-sm-2">
+              <p>Region(s)</p>
+            </div>
+            <div class="col-sm-10">
+              <p>{{ site_detail.region_names }}</p>
+            </div>
+          </div>
+
+        {% endif %}
+
+<!--        <div class="row">
          <div class="col-sm-2">
            <p>Region</p>
          </div>
@@ -83,7 +110,7 @@
            </p>
            {% endspaceless %}
          </div>
-       </div>
+       </div> -->
    
      {% endif %}
    
