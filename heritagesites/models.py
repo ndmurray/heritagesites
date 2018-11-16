@@ -108,6 +108,8 @@ class HeritageSite(models.Model):
 
         names = []
         for country in countries:
+            if country is None:
+                continue
             name = country.country_area_name
             if name is None:
                 continue
@@ -129,6 +131,8 @@ class HeritageSite(models.Model):
 
         names = []
         for region in regions:
+            if region.location.region is None:
+                continue
             name = region.location.region.region_name
             if name is None:
                 continue
@@ -140,13 +144,15 @@ class HeritageSite(models.Model):
     @property
     def sub_region_names(self):
         """
-        See above, same method for sub region(s)
+        See above, same method for sub_region(s)
         """
-        sub_regions = self.country_area.select_related('location').order_by('sub_region_name')
+        sub_regions = self.country_area.select_related('location__sub_region').order_by('location__sub_region__sub_region_name')
 
         names = []
         for sub_region in sub_regions:
-            name = sub_region.sub_region_name
+            if sub_region.location.sub_region is None:
+                continue
+            name = sub_region.location.sub_region.sub_region_name
             if name is None:
                 continue
             if name not in names:
@@ -158,13 +164,15 @@ class HeritageSite(models.Model):
     @property
     def intermediate_region_names(self):
         """
-        See above, same method for intermediate region(s)
+        See above, same method for intermediate_region(s)
         """
-        intermediate_regions = self.country_area.select_related('location').order_by('intermediate_region_name')
+        intermediate_regions = self.country_area.select_related('location__intermediate_region').order_by('location__intermediate_region__intermediate_region_name')
 
         names = []
         for intermediate_region in intermediate_regions:
-            name = intermediate_region.intermediate_region_name
+            if intermediate_region.location.intermediate_region is None:
+                continue
+            name = intermediate_region.location.intermediate_region.intermediate_region_name
             if name is None:
                 continue
             if name not in names:

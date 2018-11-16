@@ -24,19 +24,6 @@
    
      {% if site_detail.country_area.all %}
 
-        {% if site_detail.country_area_names %}
-         
-          <div class="row">
-            <div class="col-sm-2">
-              <p>Country/Area(s)</p>
-            </div>
-            <div class="col-sm-10">
-              <p>{{ site_detail.country_area_names }}</p>
-            </div>
-          </div>
-
-        {% endif %}
-
         {% if site_detail.region_names %}
          
           <div class="row">
@@ -45,6 +32,46 @@
             </div>
             <div class="col-sm-10">
               <p>{{ site_detail.region_names }}</p>
+            </div>
+          </div>
+
+        {% endif %}
+
+
+        {% if site_detail.sub_region_names %}
+         
+          <div class="row">
+            <div class="col-sm-2">
+              <p>Sub-Region(s)</p>
+            </div>
+            <div class="col-sm-10">
+              <p>{{ site_detail.sub_region_names }}</p>
+            </div>
+          </div>
+
+        {% endif %}
+
+        {% if site_detail.intermediate_region_names %}
+         
+          <div class="row">
+            <div class="col-sm-2">
+              <p>Intermediate Region(s)</p>
+            </div>
+            <div class="col-sm-10">
+              <p>{{ site_detail.intermediate_region_names }}</p>
+            </div>
+          </div>
+
+        {% endif %}
+
+        {% if site_detail.country_area_names %}
+         
+          <div class="row">
+            <div class="col-sm-2">
+              <p>Country/Area(s)</p>
+            </div>
+            <div class="col-sm-10">
+              <p>{{ site_detail.country_area_names }}</p>
             </div>
           </div>
 
